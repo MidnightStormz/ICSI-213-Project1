@@ -1,6 +1,6 @@
 public class ADTBag implements ADTBagInterface {
 
-    public Object[] data;
+    private Object[] data;
 
 
     public void ADTBag(){
@@ -11,7 +11,11 @@ public class ADTBag implements ADTBagInterface {
 
 
     public void removeLast() {
-        
+
+        int last = this.data.size() - 1;
+
+        this.data[last] = null;
+
     }
 
 
@@ -21,22 +25,39 @@ public class ADTBag implements ADTBagInterface {
 
 
     public Object get(int index) {
-        for(int i = 0; i < 100; i++){
-            if(i == index)
-                return i;
+
+        Object item = this.data[index];
+
+        return item;
+    }
+
+    public int get(Object item) {
+        int index = 0;
+        for(int i = 0; i < this.data.size(); i++){
+            if(item == this.data[i]){
+                index = i;
+            }
         }
-        return null;
+
+
+        return index;
     }
 
 
     public int size() {
         int count = 0;
-        for(int i = 0; i < 100; i++){
+        //Iterate through the this.data.
+        //While an element in the array is not equal to null increment count by one.
+        //If an element is equal to null then return count.
+        int index = 0;
+
+        while(this.data[index] != null){
             count++;
+            index++;
         }
+
     return count;
     }
-
 
 
     public void isEmpty() {
@@ -45,12 +66,16 @@ public class ADTBag implements ADTBagInterface {
 
 
 
-    public void makeEmpty() {
+    public void makeEmpty(ADTBag bag) {
 
-    }
+        }
 
-    public void insert(int i, String next) {
 
+
+    public void insert(Object item) {
+        //Find the next available index.
+        //Assign item to that location in this.data array.
+        this.data[this.data.size()] = item;
 
     }
 }
